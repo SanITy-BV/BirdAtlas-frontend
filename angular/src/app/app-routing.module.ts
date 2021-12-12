@@ -10,11 +10,11 @@ const routes: Routes = [
     canActivate: [MsalGuard]
   }
 ];
-const isIframe = window !== window.parent && !window.opener;
+
 @NgModule({
   declarations: [],
   imports: [
-    RouterModule.forRoot(routes, { initialNavigation: !isIframe ? 'enabled' : 'disabled'
+    RouterModule.forRoot(routes, { initialNavigation: 'disabled'
   })],
   exports: [RouterModule]
 })
