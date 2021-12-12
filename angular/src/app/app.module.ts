@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { ConfigService } from './services/config.service';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
+import { Config } from './models/config';
 
 const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
 
@@ -60,22 +61,11 @@ export class AppModule { }
 
 export function configFactory(configService: ConfigService, router: Router): any {
   console.log(`initializerFactory`);
-    // const promise = configService.init().toPromise().then((value) => {
-    //     console.log('finished getting configurations dynamically');
-    //     router.initialNavigation();
-    // });
-    // return () => promise;
-
     const promise = configService.init().pipe(map((value) => {
-        console.log('finished getting configurations dynamically');
+        console.log('Finished getting configurations dynamically');
         router.initialNavigation();
     }));
     return () => promise;
-
-    // return configService.init().pipe(map((value) => {
-    //   console.log('finished getting configurations dynamically');
-    //   router.initialNavigation();
-    // })).subscribe(value => { return value; });
 }
 
 export function MSALInstanceFactory(configService: ConfigService): IPublicClientApplication {
