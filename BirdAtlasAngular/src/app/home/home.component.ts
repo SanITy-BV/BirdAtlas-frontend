@@ -10,5 +10,8 @@ export class HomeComponent {
     private apiService: ApiService) { }
 
   getBirds() {
+    this.apiService.getBirds().subscribe((resp)=> {
+      console.log(resp);
+    });
   }
 }
