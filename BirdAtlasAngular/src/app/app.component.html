@@ -1,0 +1,12 @@
+<div class="ds-layout">
+  <app-header class="ds-layout__header" role="banner"></app-header>
+  <app-navigation class="ds-layout__navigation" role="navigation"
+    [displayName]="displayName"></app-navigation>
+
+  <main class="ds-layout__main" role="main">
+    <app-headmast></app-headmast>
+    <router-outlet></router-outlet>
+  </main>
+
+  <app-footer class="ds-layout__footer" role="contentinfo"></app-footer>
+</div>

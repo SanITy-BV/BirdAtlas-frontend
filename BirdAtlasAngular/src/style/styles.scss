@@ -1,0 +1,9 @@
+@import url('https://branddesignsystem.z6.web.core.windows.net/apps/brand/css/ds.min.css');
+// @import "~dialog-polyfill/dialog-polyfill.css";
+
+// https://stackoverflow.com/questions/60875020/ngx-charts-line-chart-define-line-width
+// https://github.com/swimlane/ngx-charts/issues/876#issuecomment-475818487
+g.line-chart > g:last-of-type > g:nth-child(n) g.line-series > path {
+    stroke-width: 4;
+    stroke-linecap: round;
+  }

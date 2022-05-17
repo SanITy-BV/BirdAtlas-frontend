@@ -1,0 +1,38 @@
+<input type="checkbox" id="primaryNavigation" class="ds-navigation-check" />
+<label for="primaryNavigation" class="ds-navigation-trigger">
+  <svg width="24" height="24" viewBox="0 0 24 24" class="ds-navigation-icon">
+    <rect fill="navy" width="24" height="2" x="0" y="4"></rect>
+    <rect fill="navy" width="24" height="2" x="0" y="11"></rect>
+    <rect fill="navy" width="24" height="2" x="0" y="18"></rect>
+  </svg>
+</label>
+<div class="ds-navigation-container">
+  <ul class="ds-navigation__list">
+  </ul>
+  <div class="ds-dropmenu-wrapper ds-show-large-up" aria-haspopup="true">
+    <input type="checkbox" class="ds-dropmenu-toggle" id="toggle-additional-nav">
+    <label for="toggle-additional-nav" class="ds-dropmenu__trigger ds-navigation__dropdown" role="button"
+      aria-label="Toggle account nav">
+      <span class="ds-navigation__name">{{ displayName }}</span>
+      <div class="ds-navigation__icon">
+        <img src="../assets/img/avatar.png" alt="{{ displayName }}">
+      </div>
+    </label>
+    <div class="ds-dropmenu">
+      <ul class="ds-dropmenu__list" tabindex="-1" role="menu" aria-label="Overflow"
+        data-floating-menu-direction="bottom">
+        <li class="ds-dropmenu__item" role="presentation">
+          <a href="#!" class="ds-dropmenu__button" role="menuitem">
+            Settings
+          </a>
+        </li>
+        <li class="ds-dropmenu__item ds-dropmenu__item--separator"></li>
+        <li class="ds-dropmenu__item" role="presentation">
+          <button class="ds-dropmenu__button" role="menuitem" (click)="logout()">
+            Logout
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

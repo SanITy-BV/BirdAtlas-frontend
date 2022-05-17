@@ -1,0 +1,29 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.234.0/containers/typescript-node
+{
+	"name": "BirdAtlas",
+	"build": {
+		"dockerfile": "Dockerfile",
+		// Update 'VARIANT' to pick a Node version: 18, 16, 14.
+		// Append -bullseye or -buster to pin to an OS version.
+		// Use -bullseye variants on local on arm64/Apple Silicon.
+		"args": { 
+			"VARIANT": "16-bullseye"
+		}
+	},
+	"settings": {
+	},
+	"forwardPorts": [4200],
+
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"dbaeumer.vscode-eslint",
+		"vscode-icons-team.vscode-icons",
+		"angular.ng-template",
+		"ms-vscode.vscode-typescript-tslint-plugin",
+		"eamodio.gitlens",
+		"mhutchie.git-graph"
+	],
+	"remoteUser": "node",
+	"postCreateCommand": "npm install"
+}
