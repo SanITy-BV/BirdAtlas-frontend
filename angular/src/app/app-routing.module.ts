@@ -3,12 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { MsalGuard } from '@azure/msal-angular';
 import { BrowserUtils } from '@azure/msal-browser';
 import { AppComponent } from './app.component';
+import { roles } from './auth-config';
+import { RoleGuard } from './guards/role.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: AppComponent,
-    canActivate: [MsalGuard]
+    canActivate: [MsalGuard, RoleGuard],
+    data: { expectedRole: roles.TaskUser } 
   }
 ];
 

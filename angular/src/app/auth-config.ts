@@ -29,7 +29,7 @@
              loggerCallback(logLevel: LogLevel, message: string) {
                  console.log(message);
              },
-             logLevel: LogLevel.Verbose,
+             logLevel: LogLevel.Info,
              piiLoggingEnabled: false
          }
      }
@@ -44,3 +44,8 @@
  export const loginRequest = {
    scopes: []
  };
+
+ export const roles = {
+    TaskAdmin: "TaskAdmin",
+    TaskUser: "TaskUser"
+}

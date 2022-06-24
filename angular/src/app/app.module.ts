@@ -1,6 +1,5 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { environment } from 'src/environments/environment';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { MsalModule, MsalRedirectComponent, MsalGuard, MsalInterceptor, MsalInterceptorConfiguration, MsalGuardConfiguration, MsalService, MsalBroadcastService, MSAL_INSTANCE, MSAL_GUARD_CONFIG, MSAL_INTERCEPTOR_CONFIG} from '@azure/msal-angular';
 import { BrowserCacheLocation, InteractionType, PublicClientApplication, LogLevel, IPublicClientApplication } from '@azure/msal-browser';
@@ -9,32 +8,12 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgxSpinnerModule } from 'ngx-spinner';
 
+import { msalConfig } from './auth-config';
+
 const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
 
 export function MSALInstanceFactory(): IPublicClientApplication {
-  return new PublicClientApplication({
-    auth: {
-      clientId: environment.msalAppClientId,
-      authority: `https://login.microsoftonline.com/${environment.msalTenantId}`,
-      redirectUri: environment.redirectUrl,
-      postLogoutRedirectUri: environment.redirectUrl,
-    },
-    cache: {
-      cacheLocation: BrowserCacheLocation.LocalStorage,
-      storeAuthStateInCookie: isIE, // set to true for IE 11. Remove this line to use Angular Universal
-    },
-    system: {
-      loggerOptions: {
-        loggerCallback,
-        logLevel: LogLevel.Info,
-        piiLoggingEnabled: false
-      }
-    }
-  });
-}
-
-export function loggerCallback(logLevel: LogLevel, message: string) {
-  console.log(message);
+  return new PublicClientApplication(msalConfig);
 }
 
 export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
